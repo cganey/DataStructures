@@ -100,7 +100,7 @@ public class LinkedList {
 		}
 		
 		while((next = current.getNext()) != null){
-			//reach to the and with having the current and previous reference 
+			//reach to the end with having the current and previous reference 
 			prev = current;
 			current = next ;
 		}

@@ -1,4 +1,4 @@
-package com.amiyasahu.linkedlists.singly;
+package com.amiyasahu.linkedlist.singly;
 
 public class ListNode {
 	private int data;

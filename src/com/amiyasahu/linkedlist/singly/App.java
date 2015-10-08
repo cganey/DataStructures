@@ -1,4 +1,4 @@
-package com.amiyasahu.linkedlists.singly;
+package com.amiyasahu.linkedlist.singly;
 
 public class App {
 	public static void main(String[] args) {

@@ -187,15 +187,15 @@ public class LinkedList {
 			if (temp.equals(node)) {
 				return pos;
 			}
-			
+
 			pos++;
-			
-			//advance the pointer
+
+			// advance the pointer
 			temp = temp.getNext();
 		}
 
-		//return -1 if the element is not found or the list is empty 
-		return -1 ;
+		// return -1 if the element is not found or the list is empty
+		return -1;
 	}
 
 	@Override
@@ -221,4 +221,8 @@ public class LinkedList {
 		return length;
 	}
 
+	public synchronized void clear() {
+		head = null;
+		length = 0;
+	}
 }

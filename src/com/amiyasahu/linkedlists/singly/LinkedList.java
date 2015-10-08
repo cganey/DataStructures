@@ -9,28 +9,22 @@ public class LinkedList {
 		head = null;
 	}
 
-	public ListNode getHead() {
-		return head;
-	}
-
-	public void setHead(ListNode head) {
-		this.head = head;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
+	/**
+	 * Insert an element at the beginning of the linked list
+	 * 
+	 * @param node
+	 */
 	public synchronized void insertAtBegin(ListNode node) {
 		node.setNext(head);
 		head = node;
 		length++;
 	}
 
+	/**
+	 * Inserts an element at the end of the linked list
+	 * 
+	 * @param node
+	 */
 	public synchronized void insertAtEnd(ListNode node) {
 		if (head == null) {
 			head = node;
@@ -45,6 +39,12 @@ public class LinkedList {
 		}
 	}
 
+	/**
+	 * Insert an element at a specific position
+	 * 
+	 * @param node
+	 * @param position
+	 */
 	public synchronized void insert(ListNode node, int position) {
 		// fix the position
 		if (position < 0)
@@ -76,6 +76,11 @@ public class LinkedList {
 		length++;
 	}
 
+	/**
+	 * Remove an element from the beginning of the linked list
+	 * 
+	 * @return
+	 */
 	public synchronized ListNode removeFromBegin() {
 		ListNode node = head;
 
@@ -87,6 +92,11 @@ public class LinkedList {
 		return node;
 	}
 
+	/**
+	 * Remove an element from the End of the linked list
+	 * 
+	 * @return
+	 */
 	public synchronized ListNode removeFromEnd() {
 
 		if (head == null) {
@@ -113,15 +123,20 @@ public class LinkedList {
 		return current;
 	}
 
+	/**
+	 * Remove an matched elemet from the linked list
+	 * 
+	 * @param node
+	 */
 	public synchronized void removeMatched(ListNode node) {
 
 		if (head == null) {
-			// this is an empty list
+			// this is an empty list , No action required
 			return;
 		}
 
 		if (node.equals(head)) {
-			// if the node is the first element
+			// if the node is the first element , just remove the first element
 			head = head.getNext();
 			return;
 		}
@@ -180,8 +195,9 @@ public class LinkedList {
 	}
 
 	/**
-	 * Return the position of an given element in the list 
-	 * returns -1 if the element is not found 
+	 * Return the position of an given element in the list returns -1 if the
+	 * element is not found
+	 * 
 	 * @param node
 	 * @return position
 	 */
@@ -224,7 +240,8 @@ public class LinkedList {
 	}
 
 	/**
-	 * Returns the length of the linked list 
+	 * Returns the length of the linked list
+	 * 
 	 * @return
 	 */
 	public int length() {
@@ -232,10 +249,27 @@ public class LinkedList {
 	}
 
 	/**
-	 * Clears the list 
+	 * Clears the list
 	 */
 	public synchronized void clear() {
 		head = null;
 		length = 0;
 	}
+
+	public ListNode getHead() {
+		return head;
+	}
+
+	public void setHead(ListNode head) {
+		this.head = head;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
 }

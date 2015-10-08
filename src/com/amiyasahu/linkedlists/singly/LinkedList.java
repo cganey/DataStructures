@@ -88,6 +88,7 @@ public class LinkedList {
 			head = node.getNext();
 			node.setNext(null);
 		}
+		length--;
 
 		return node;
 	}
@@ -108,6 +109,7 @@ public class LinkedList {
 		if (next == null) {
 			// it has only 1 element
 			head = null;
+			length--;
 			return current;
 		}
 
@@ -119,7 +121,7 @@ public class LinkedList {
 
 		// set the previous element next node to null
 		prev.setNext(null);
-
+		length--;
 		return current;
 	}
 
@@ -138,6 +140,7 @@ public class LinkedList {
 		if (node.equals(head)) {
 			// if the node is the first element , just remove the first element
 			head = head.getNext();
+			length--;
 			return;
 		}
 
@@ -148,6 +151,7 @@ public class LinkedList {
 			if (node.equals(next)) {
 				// if next node matches to the input node , remove it
 				current.setNext(next.getNext());
+				length--;
 				return;
 			}
 
@@ -205,7 +209,7 @@ public class LinkedList {
 		ListNode temp = head;
 		int position = 0;
 
-		if (temp != null) {
+		while (temp != null) {
 			if (temp.equals(node)) {
 				return position;
 			}

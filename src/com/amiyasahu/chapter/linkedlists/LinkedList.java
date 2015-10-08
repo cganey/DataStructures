@@ -36,8 +36,10 @@ public class LinkedList {
 			head = node;
 		} else {
 			ListNode current, next;
+
 			for (current = head; (next = current.getNext()) != null; current = next)
 				;
+
 			current.setNext(node);
 			length++;
 		}
@@ -85,30 +87,115 @@ public class LinkedList {
 		return node;
 	}
 
-	public synchronized ListNode removeFromEnd(){
-		
+	public synchronized ListNode removeFromEnd() {
+
 		if (head == null) {
 			return null;
 		}
-		
-		ListNode current = head , prev = null , next = head.getNext();
-		
-		if(next == null){
-			//it has only 1 element 
-			head = null ;
-			return current ;
+
+		ListNode current = head, prev = null, next = head.getNext();
+
+		if (next == null) {
+			// it has only 1 element
+			head = null;
+			return current;
 		}
-		
-		while((next = current.getNext()) != null){
-			//reach to the end with having the current and previous reference 
+
+		while ((next = current.getNext()) != null) {
+			// reach to the end with having the current and previous reference
 			prev = current;
-			current = next ;
+			current = next;
 		}
-		
-		//set the previous element next node to null 
+
+		// set the previous element next node to null
 		prev.setNext(null);
-		
-		return current ;
+
+		return current;
+	}
+
+	public synchronized void removeMatched(ListNode node) {
+
+		if (head == null) {
+			// this is an empty list
+			return;
+		}
+
+		if (node.equals(head)) {
+			// if the node is the first element
+			head = head.getNext();
+			return;
+		}
+
+		ListNode current = head, next = null;
+
+		while ((next = current.getNext()) != null) {
+
+			if (node.equals(next)) {
+				// if next node matches to the input node , remove it
+				current.setNext(next.getNext());
+				return;
+			}
+
+			// get ready for the next node
+			current = next;
+		}
+	}
+
+	/**
+	 * Remove the particular node at the specific position
+	 * 
+	 * @param position
+	 */
+	public synchronized void remove(int position) {
+		// fix the position
+		if (position < 0)
+			position = 0;
+
+		if (position > length)
+			position = length;
+
+		if (head == null) {
+			// empty list , Do nothing
+			return;
+		}
+
+		if (position == 0) {
+			// remove the first element
+			head = head.getNext();
+		} else {
+			// go to the position first
+			ListNode temp = head;
+			for (int i = 1; i < position; i++) {
+				temp = temp.getNext();
+			}
+
+			// suppose you need to remove 3rd element , you reached at 2nd
+			// element ,
+			// now you have to join 2nd element with fourth element
+			temp.setNext(temp.getNext().getNext());
+		}
+
+		length--;
+
+	}
+
+	public synchronized int getPosition(ListNode node) {
+		ListNode temp = head;
+		int pos = 0;
+
+		if (temp != null) {
+			if (temp.equals(node)) {
+				return pos;
+			}
+			
+			pos++;
+			
+			//advance the pointer
+			temp = temp.getNext();
+		}
+
+		//return -1 if the element is not found or the list is empty 
+		return -1 ;
 	}
 
 	@Override

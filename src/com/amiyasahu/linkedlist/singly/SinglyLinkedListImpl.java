@@ -1,30 +1,23 @@
 package com.amiyasahu.linkedlist.singly;
 
-public class LinkedList {
+public class SinglyLinkedListImpl implements SinglyLinkedList {
+	
 	private ListNode head;
 	private int length;
 
-	public LinkedList() {
+	public SinglyLinkedListImpl() {
 		length = 0;
 		head = null;
 	}
 
-	/**
-	 * Insert an element at the beginning of the linked list
-	 * 
-	 * @param node
-	 */
+	@Override
 	public synchronized void insertAtBegin(ListNode node) {
 		node.setNext(head);
 		head = node;
 		length++;
 	}
 
-	/**
-	 * Inserts an element at the end of the linked list
-	 * 
-	 * @param node
-	 */
+	@Override
 	public synchronized void insertAtEnd(ListNode node) {
 		if (head == null) {
 			head = node;
@@ -39,12 +32,7 @@ public class LinkedList {
 		}
 	}
 
-	/**
-	 * Insert an element at a specific position
-	 * 
-	 * @param node
-	 * @param position
-	 */
+	@Override
 	public synchronized void insert(ListNode node, int position) {
 		// fix the position
 		if (position < 0)
@@ -76,11 +64,7 @@ public class LinkedList {
 		length++;
 	}
 
-	/**
-	 * Remove an element from the beginning of the linked list
-	 * 
-	 * @return
-	 */
+	@Override
 	public synchronized ListNode removeFromBegin() {
 		ListNode node = head;
 
@@ -93,11 +77,7 @@ public class LinkedList {
 		return node;
 	}
 
-	/**
-	 * Remove an element from the End of the linked list
-	 * 
-	 * @return
-	 */
+	@Override
 	public synchronized ListNode removeFromEnd() {
 
 		if (head == null) {
@@ -125,11 +105,7 @@ public class LinkedList {
 		return current;
 	}
 
-	/**
-	 * Remove an matched elemet from the linked list
-	 * 
-	 * @param node
-	 */
+	@Override
 	public synchronized void removeMatched(ListNode node) {
 
 		if (head == null) {
@@ -160,11 +136,7 @@ public class LinkedList {
 		}
 	}
 
-	/**
-	 * Remove the particular node at the specific position
-	 * 
-	 * @param position
-	 */
+	@Override
 	public synchronized void remove(int position) {
 		// fix the position
 		if (position < 0)
@@ -243,11 +215,10 @@ public class LinkedList {
 		return result + " ]";
 	}
 
-	/**
-	 * Returns the length of the linked list
-	 * 
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.amiyasahu.linkedlist.singly.LinkedListI#length()
 	 */
+	@Override
 	public int length() {
 		return length;
 	}
@@ -270,10 +241,6 @@ public class LinkedList {
 
 	public int getLength() {
 		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
 	}
 
 }

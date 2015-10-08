@@ -3,7 +3,7 @@ package com.amiyasahu.linkedlist.singly;
 public class App {
 	public static void main(String[] args) {
 
-		LinkedList linkedList = new LinkedList();
+		SinglyLinkedListImpl linkedList = new SinglyLinkedListImpl();
 		System.out.println(linkedList); // [ ]
 
 		linkedList.insertAtBegin(new ListNode(10));
